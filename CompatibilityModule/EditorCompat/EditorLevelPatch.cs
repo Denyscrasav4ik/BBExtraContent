@@ -408,6 +408,28 @@ namespace BBTimes.CompatibilityModule.EditorCompat
                 EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool(key + "_PRIPoster"));
             }
 
+            // Add posters in general
+            EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("PST_Wallbell"));
+            EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("WallClock"));
+            EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("PST_CafeteriaRules"));
+            EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("PST_FoodAllergy"));
+            EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("PST_SweepPoster"));
+            EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("PST_ComputerRoom"));
+            EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("PST_AbandonedRoomTut"));
+            EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("PST_Mirror"));
+            EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("Chk_Act_FocusedStudent"));
+            EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("Chk_Act_SensibleVases"));
+
+            // SECRET POSTERS
+            if (SaveManager.Instance.secretEnding || BBTimesManager.plug.forceEnableSecretObjects.Value)
+            {
+                EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("Poster_LiveTubeMakeUp"));
+                EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("Poster_LevelGenMakeUp"));
+                EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("Poster_FunFormula"));
+                EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("Poster_NoWinFormula"));
+                EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("Poster_NoRealWin"));
+            }
+
             // Add Room tools
             List<string> roomList = new List<string>
             {

@@ -20,9 +20,6 @@ using CustomMainMenusAPI;
 using HarmonyLib;
 using PlusStudioLevelFormat;
 using PlusStudioLevelLoader;
-using PlusLevelStudio;
-using PlusLevelStudio.Editor;
-using PlusLevelStudio.Editor.Tools;
 using MTM101BaldAPI;
 using MTM101BaldAPI.AssetTools;
 using MTM101BaldAPI.Registers;
@@ -252,10 +249,6 @@ namespace BBTimes.Manager
             var wallClock = ObjectCreators.CreatePosterObject([AssetLoader.TextureFromFile(Path.Combine(MiscPath, TextureFolder, GetAssetName("wall_clock.png")))]);
             wallClock.name = "WallClock";
             LevelLoaderPlugin.Instance.posterAliases.Add(wallClock.name, wallClock);
-            EditorInterfaceModes.AddModeCallback((EditorMode mode, bool vanillaCompliant) =>
-            {
-                EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool(wallClock.name));
-            });
             man.Add("WallClock", wallClock);
 
 

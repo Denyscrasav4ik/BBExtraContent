@@ -192,7 +192,6 @@ namespace BBTimes.Manager
             float y = 20f;
             AddToggle(container, BasePlugin.Instance.enableYoutuberMode, "BBTimes_Settings_Misc_Youtuber_Name", "BBTimes_Settings_Misc_Youtuber_Desc", ref y);
             AddToggle(container, BasePlugin.Instance.enableReplacementNPCsAsNormalOnes, "BBTimes_Settings_Misc_Replacements_Name", "BBTimes_Settings_Misc_Replacements_Desc", ref y);
-            AddToggle(container, BasePlugin.Instance.disableArcadeRennovationsSupport, "BBTimes_Settings_Misc_Arcade_Name", "BBTimes_Settings_Misc_Arcade_Desc", ref y);
             AddToggle(container, BasePlugin.Instance.disableRedEndingCutscene, "BBTimes_Settings_Misc_Cutscene_Name", "BBTimes_Settings_Misc_Cutscene_Desc", ref y);
             AddToggle(container, BasePlugin.Instance.enableUnbalancedLegacyMode, "BBTimes_Settings_Misc_Legacy_Name", "BBTimes_Settings_Misc_Legacy_Desc", ref y);
             AddToggle(container, BasePlugin.Instance.forceEnableSecretObjects, "BBTimes_Settings_Misc_Secrets_Name", "BBTimes_Settings_Misc_Secrets_Desc", ref y);

@@ -127,10 +127,8 @@ namespace BBTimes
 
         internal ConfigEntry<bool>
         disableOutside, disableRedEndingCutscene,
-        enableBigRooms, enableReplacementNPCsAsNormalOnes, enableYoutuberMode, forceChristmasMode, forceBaldiMarch31Day, disableArcadeRennovationsSupport, disableSchoolhouseEscape, enableUnbalancedLegacyMode, forceEnableSecretObjects;
+        enableBigRooms, enableReplacementNPCsAsNormalOnes, enableYoutuberMode, forceChristmasMode, forceBaldiMarch31Day, disableSchoolhouseEscape, enableUnbalancedLegacyMode, forceEnableSecretObjects;
         internal List<string> disabledCharacters = [], disabledItems = [], disabledEvents = [], disabledBuilders = [], disableNaturalObject = [];
-        // internal bool HasInfiniteFloors => Chainloader.PluginInfos.ContainsKey("mtm101.rulerp.baldiplus.endlessfloors") ||
-        //	Chainloader.PluginInfos.ContainsKey("Rad.cmr.baldiplus.arcaderenovations");
 
         private void Awake()
         {
@@ -151,7 +149,6 @@ namespace BBTimes
 
             enableYoutuberMode = Config.Bind(MISC_SETTINGS, "Enable Youtuber Mode", false, "Wanna get some exclusive content easily? Set this to \"true\" and *everything* will have the weight of 9999.");
             enableReplacementNPCsAsNormalOnes = Config.Bind(MISC_SETTINGS, "Disable Replacement Feature", false, "Setting this \"true\" will allow replacement npcs to spawn as normal npcs instead, making the game considerably harder in some ways.");
-            disableArcadeRennovationsSupport = Config.Bind(MISC_SETTINGS, "Disable Arcade Rennovations Support", false, "Setting this to \"true\" disable any checks for arcade rennovations. This can be useful for RNG Floors, if you\'re having any issues.");
             disableRedEndingCutscene = Config.Bind(MISC_SETTINGS, "Disable Red Ending Cutscene", false, "If True, the cutscene played at the end of the game will be completely disabled.");
             enableUnbalancedLegacyMode = Config.Bind(MISC_SETTINGS, "Enable Unbalanced Legacy Mode", false, "If True, the old Times\' floor changes will be brought up back and make the game considerably unbalanced.");
             forceEnableSecretObjects = Config.Bind(MISC_SETTINGS, "Force Enable Secret Objects", false, "If True, the objects from the Secret Ending will added to the Level Studio, regardless of whether you unlocked them or not (Requires restart).");
@@ -871,9 +868,6 @@ namespace BBTimes
             if (Storage.IsChristmas)
                 tags.Add("Times_Specials_Christmas");
 
-            // if (plug.HasInfiniteFloors && plug.disableArcadeRennovationsSupport.Value)
-            //	tags.Add("Times_Config_DisableArcadeRennovationsSupport");
-
             return [.. tags];
         }
 
@@ -908,7 +902,6 @@ namespace BBTimes
                     "Times_Config_ReplacementDisable" => "Character replacement feature disabled",
                     "Times_Config_YoutuberMode" => "Youtube Mode enabled",
                     "Times_Specials_Christmas" => "Christmas mode enabled",
-                    "Times_Config_DisableArcadeRennovationsSupport" => "No arcade renovations support",
                     _ => tags[i]
                 };
             }
@@ -928,6 +921,6 @@ namespace BBTimes
 
         public const string PLUGIN_NAME = "BB+ Extra Content";
 
-        public const string PLUGIN_VERSION = "1.4.3.4";
+        public const string PLUGIN_VERSION = "1.4.3.5";
     }
 }

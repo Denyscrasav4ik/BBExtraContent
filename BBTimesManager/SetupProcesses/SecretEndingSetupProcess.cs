@@ -12,9 +12,6 @@ using PixelInternalAPI.Classes;
 using PixelInternalAPI.Extensions;
 using PlusStudioLevelFormat;
 using PlusStudioLevelLoader;
-using PlusLevelStudio;
-using PlusLevelStudio.Editor;
-using PlusLevelStudio.Editor.Tools;
 using UnityEngine;
 
 namespace BBTimes.Manager
@@ -357,73 +354,25 @@ namespace BBTimes.Manager
                 sceneObjectClone.levelAsset.rooms[0].doorMats.open.SetTexture("_Mask", doorTextureMask);
                 sceneObjectClone.levelAsset.rooms[0].doorMats.shut.SetTexture("_Mask", doorTextureMask);
 
-                // --- Add posters to the secret ending room and the editor ---
+                // --- Add posters to the secret ending room
                 var p1 = ObjectCreators.CreatePosterObject([AssetLoader.TextureFromFile(Path.Combine(SecretEndingPath, "liveTubeMakeUp.png"))]);
-
-                if (SaveManager.Instance.secretEnding || BBTimesManager.plug.forceEnableSecretObjects.Value)
-                {
-                    LevelLoaderPlugin.Instance.posterAliases.Add(p1.name, p1);
-                    EditorInterfaceModes.AddModeCallback((EditorMode mode, bool vanilla) =>
-                    {
-                        EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool(p1.name));
-                    });
-                }
-
+                LevelLoaderPlugin.Instance.posterAliases.Add(p1.name, p1);
                 sceneObjectClone.levelAsset.posters.Add(new() { poster = p1, position = new(16, 12), direction = Direction.North });
 
                 var p2 = ObjectCreators.CreatePosterObject([AssetLoader.TextureFromFile(Path.Combine(SecretEndingPath, "levelGenMakeUp.png"))]);
-
-                if (SaveManager.Instance.secretEnding || BBTimesManager.plug.forceEnableSecretObjects.Value)
-                {
-                    LevelLoaderPlugin.Instance.posterAliases.Add(p2.name, p2);
-                    EditorInterfaceModes.AddModeCallback((EditorMode mode, bool vanilla) =>
-                    {
-                        EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool(p2.name));
-                    });
-                }
-
+                LevelLoaderPlugin.Instance.posterAliases.Add(p2.name, p2);
                 sceneObjectClone.levelAsset.posters.Add(new() { poster = p2, position = new(15, 10), direction = Direction.South });
 
-
                 var p3 = ObjectCreators.CreatePosterObject([AssetLoader.TextureFromFile(Path.Combine(SecretEndingPath, "chk_funFormula.png"))]);
-
-                if (SaveManager.Instance.secretEnding || BBTimesManager.plug.forceEnableSecretObjects.Value)
-                {
-                    LevelLoaderPlugin.Instance.posterAliases.Add(p3.name, p3);
-                    EditorInterfaceModes.AddModeCallback((EditorMode mode, bool vanilla) =>
-                    {
-                        EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool(p3.name));
-                    });
-                }
-
+                LevelLoaderPlugin.Instance.posterAliases.Add(p3.name, p3);
                 sceneObjectClone.levelAsset.posters.Add(new() { poster = p3, position = new(15, 7), direction = Direction.South });
 
-
                 var p4 = ObjectCreators.CreatePosterObject([AssetLoader.TextureFromFile(Path.Combine(SecretEndingPath, "chk_theNoWinFormula.png"))]);
-
-                if (SaveManager.Instance.secretEnding || BBTimesManager.plug.forceEnableSecretObjects.Value)
-                {
-                    LevelLoaderPlugin.Instance.posterAliases.Add(p4.name, p4);
-                    EditorInterfaceModes.AddModeCallback((EditorMode mode, bool vanilla) =>
-                    {
-                        EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool(p4.name));
-                    });
-                }
-
+                LevelLoaderPlugin.Instance.posterAliases.Add(p4.name, p4);
                 sceneObjectClone.levelAsset.posters.Add(new() { poster = p4, position = new(15, 9), direction = Direction.North });
 
-
                 var p5 = ObjectCreators.CreatePosterObject([AssetLoader.TextureFromFile(Path.Combine(SecretEndingPath, "chk_noRealWin.png"))]);
-
-                if (SaveManager.Instance.secretEnding || BBTimesManager.plug.forceEnableSecretObjects.Value)
-                {
-                    LevelLoaderPlugin.Instance.posterAliases.Add(p5.name, p5);
-                    EditorInterfaceModes.AddModeCallback((EditorMode mode, bool vanilla) =>
-                    {
-                        EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool(p5.name));
-                    });
-                }
-
+                LevelLoaderPlugin.Instance.posterAliases.Add(p5.name, p5);
                 sceneObjectClone.levelAsset.posters.Add(new() { poster = p5, position = new(16, 8), direction = Direction.East });
 
                 sceneObjectClone.levelAsset.rooms[0].hasActivity = false;

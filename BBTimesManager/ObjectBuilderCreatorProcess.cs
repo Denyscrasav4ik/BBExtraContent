@@ -5,9 +5,6 @@ using MTM101BaldAPI;
 using MTM101BaldAPI.AssetTools;
 using PlusStudioLevelFormat;
 using PlusStudioLevelLoader;
-using PlusLevelStudio;
-using PlusLevelStudio.Editor;
-using PlusLevelStudio.Editor.Tools;
 using UnityEngine;
 
 namespace BBTimes.Manager
@@ -27,10 +24,7 @@ namespace BBTimes.Manager
             ]);
             wallBellPoster.name = "PST_Wallbell";
             LevelLoaderPlugin.Instance.posterAliases.Add(wallBellPoster.name, wallBellPoster);
-            EditorInterfaceModes.AddModeCallback((EditorMode mode, bool vanillaCompliant) =>
-            {
-                EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool(wallBellPoster.name));
-            });
+
             vent = CreatorExtensions.CreateObjectBuilder<RandomForcedPostersBuilder>("ForcedPosterBuilder", out var forcedPosterBuilder);
             forcedPosterBuilder.allowedShape = TileShapeMask.Single | TileShapeMask.Corner;
             vent.parameters.chance[0] = 0.35f;
