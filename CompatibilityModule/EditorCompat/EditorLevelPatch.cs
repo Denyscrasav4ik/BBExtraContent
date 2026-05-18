@@ -383,6 +383,11 @@ namespace BBTimes.CompatibilityModule.EditorCompat
         /// </summary>
         private static void InitializeTools(EditorMode mode, bool isVanillaCompliant)
         {
+            if (SaveManager.Instance.secretEnding || BBTimesManager.plug.forceEnableSecretObjects.Value)
+            {
+                BBTimesManager.CreateAndRegisterSecretPosters();
+            }
+
             // Add Item tools
             var itemsToAdd = ItemMetaStorage.Instance.GetAllFromMod(BBTimesManager.plug.Info)
                 .Select(meta => meta.value)
@@ -423,11 +428,11 @@ namespace BBTimes.CompatibilityModule.EditorCompat
             // SECRET POSTERS
             if (SaveManager.Instance.secretEnding || BBTimesManager.plug.forceEnableSecretObjects.Value)
             {
-                EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("Poster_LiveTubeMakeUp"));
-                EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("Poster_LevelGenMakeUp"));
-                EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("Poster_FunFormula"));
-                EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("Poster_NoWinFormula"));
-                EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("Poster_NoRealWin"));
+                EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("liveTubeMakeUpPoster"));
+                EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("levelGenMakeUpPoster"));
+                EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("chk_funFormulaPoster"));
+                EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("chk_theNoWinFormulaPoster"));
+                EditorInterfaceModes.AddToolToCategory(mode, "posters", new PosterTool("chk_noRealWinPoster"));
             }
 
             // Add Room tools

@@ -312,6 +312,29 @@ namespace BBTimes.Manager
             lever.gameObject.AddBoxCollider(Vector3.zero, new(4f, 4f, 1f), true);
         }
 
+        public static void CreateAndRegisterSecretPosters()
+        {
+            if (LevelLoaderPlugin.Instance.posterAliases.ContainsKey("liveTubeMakeUpPoster")) return;
+            var p1 = ObjectCreators.CreatePosterObject([AssetLoader.TextureFromFile(Path.Combine(SecretEndingPath, "liveTubeMakeUp.png"))]);
+            LevelLoaderPlugin.Instance.posterAliases.Add(p1.name, p1);
+
+            if (LevelLoaderPlugin.Instance.posterAliases.ContainsKey("levelGenMakeUpPoster")) return;
+            var p2 = ObjectCreators.CreatePosterObject([AssetLoader.TextureFromFile(Path.Combine(SecretEndingPath, "levelGenMakeUp.png"))]); ;
+            LevelLoaderPlugin.Instance.posterAliases.Add(p2.name, p2);
+
+            if (LevelLoaderPlugin.Instance.posterAliases.ContainsKey("chk_funFormulaPoster")) return;
+            var p3 = ObjectCreators.CreatePosterObject([AssetLoader.TextureFromFile(Path.Combine(SecretEndingPath, "chk_funFormula.png"))]);
+            LevelLoaderPlugin.Instance.posterAliases.Add(p3.name, p3);
+
+            if (LevelLoaderPlugin.Instance.posterAliases.ContainsKey("chk_theNoWinFormulaPoster")) return;
+            var p4 = ObjectCreators.CreatePosterObject([AssetLoader.TextureFromFile(Path.Combine(SecretEndingPath, "chk_theNoWinFormula.png"))]);
+            LevelLoaderPlugin.Instance.posterAliases.Add(p4.name, p4);
+
+            if (LevelLoaderPlugin.Instance.posterAliases.ContainsKey("chk_noRealWinPoster")) return;
+            var p5 = ObjectCreators.CreatePosterObject([AssetLoader.TextureFromFile(Path.Combine(SecretEndingPath, "chk_noRealWin.png"))]);
+            LevelLoaderPlugin.Instance.posterAliases.Add(p5.name, p5);
+        }
+
         public static void SetupPostAssetsForSecretEnding()
         {
             // --- Times Ending Manager Setup ---
@@ -354,25 +377,22 @@ namespace BBTimes.Manager
                 sceneObjectClone.levelAsset.rooms[0].doorMats.open.SetTexture("_Mask", doorTextureMask);
                 sceneObjectClone.levelAsset.rooms[0].doorMats.shut.SetTexture("_Mask", doorTextureMask);
 
+                CreateAndRegisterSecretPosters();
+
                 // --- Add posters to the secret ending room
-                var p1 = ObjectCreators.CreatePosterObject([AssetLoader.TextureFromFile(Path.Combine(SecretEndingPath, "liveTubeMakeUp.png"))]);
-                LevelLoaderPlugin.Instance.posterAliases.Add(p1.name, p1);
+                var p1 = LevelLoaderPlugin.Instance.posterAliases["liveTubeMakeUpPoster"];
                 sceneObjectClone.levelAsset.posters.Add(new() { poster = p1, position = new(16, 12), direction = Direction.North });
 
-                var p2 = ObjectCreators.CreatePosterObject([AssetLoader.TextureFromFile(Path.Combine(SecretEndingPath, "levelGenMakeUp.png"))]);
-                LevelLoaderPlugin.Instance.posterAliases.Add(p2.name, p2);
+                var p2 = LevelLoaderPlugin.Instance.posterAliases["levelGenMakeUpPoster"];
                 sceneObjectClone.levelAsset.posters.Add(new() { poster = p2, position = new(15, 10), direction = Direction.South });
 
-                var p3 = ObjectCreators.CreatePosterObject([AssetLoader.TextureFromFile(Path.Combine(SecretEndingPath, "chk_funFormula.png"))]);
-                LevelLoaderPlugin.Instance.posterAliases.Add(p3.name, p3);
+                var p3 = LevelLoaderPlugin.Instance.posterAliases["chk_funFormulaPoster"];
                 sceneObjectClone.levelAsset.posters.Add(new() { poster = p3, position = new(15, 7), direction = Direction.South });
 
-                var p4 = ObjectCreators.CreatePosterObject([AssetLoader.TextureFromFile(Path.Combine(SecretEndingPath, "chk_theNoWinFormula.png"))]);
-                LevelLoaderPlugin.Instance.posterAliases.Add(p4.name, p4);
+                var p4 = LevelLoaderPlugin.Instance.posterAliases["chk_theNoWinFormulaPoster"];
                 sceneObjectClone.levelAsset.posters.Add(new() { poster = p4, position = new(15, 9), direction = Direction.North });
 
-                var p5 = ObjectCreators.CreatePosterObject([AssetLoader.TextureFromFile(Path.Combine(SecretEndingPath, "chk_noRealWin.png"))]);
-                LevelLoaderPlugin.Instance.posterAliases.Add(p5.name, p5);
+                var p5 = LevelLoaderPlugin.Instance.posterAliases["chk_noRealWinPoster"];
                 sceneObjectClone.levelAsset.posters.Add(new() { poster = p5, position = new(16, 8), direction = Direction.East });
 
                 sceneObjectClone.levelAsset.rooms[0].hasActivity = false;
